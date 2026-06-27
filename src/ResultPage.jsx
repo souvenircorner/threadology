@@ -18,13 +18,11 @@ export default function ResultPage({ username, dataMock, onReset }) {
     return () => clearTimeout(timer);
   }, [dataMock]);
 
-  // Fungsi sakti untuk men-download kartu dalam rasio 3:4 sebagai PNG
   const handleDownload = () => {
     if (cardRef.current === null) return;
     
     setIsDownloading(true);
     
-    // Mengubah elemen HTML menjadi gambar PNG
     toPng(cardRef.current, { cacheBust: true, pixelRatio: 2 })
       .then((dataUrl) => {
         const link = document.createElement('a');
@@ -48,9 +46,9 @@ export default function ResultPage({ username, dataMock, onReset }) {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#FDFBF7] flex flex-col items-center justify-start pt-14 pb-6 p-4 text-[#2C2C2C]">
+    <div className="relative min-h-screen bg-[#FDFBF7] flex flex-col items-center justify-start pt-10 pb-6 p-4 text-[#2C2C2C]">
       
-      {/* Tombol Kembali di Pojok Kiri Atas */}
+      {/* Tombol Kembali */}
       <button 
         onClick={onReset}
         className="absolute top-5 left-5 text-xs font-semibold tracking-wide text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-1 cursor-pointer z-20"
@@ -58,32 +56,32 @@ export default function ResultPage({ username, dataMock, onReset }) {
         ← Kembali
       </button>
 
-      {/* ================= AREA KARTU RASIO 3:4 (YANG AKAN DI-DOWNLOAD) ================= */}
+      {/* ================= AREA KARTU RASIO 3:4 (ANTI-POTONG) ================= */}
       <div 
         ref={cardRef}
         id="download-card"
-        className="w-full max-w-[340px] aspect-[3/4] bg-white border border-[#EBE6DD] rounded-[32px] p-5 shadow-sm flex flex-col justify-between overflow-hidden relative"
+        className="w-full max-w-[330px] aspect-[3/4] bg-white border border-[#EBE6DD] rounded-[28px] p-4 shadow-sm flex flex-col justify-between overflow-hidden relative"
       >
-        {/* Background Hiasan Halus khusus di dalam kartu agar hasil download tetap estetik */}
+        {/* Background Hiasan Halus */}
         <div className="absolute -top-20 -left-20 w-48 h-48 bg-[#DCEEFF]/40 rounded-full filter blur-2xl pointer-events-none" />
         <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#FFE3D1]/50 rounded-full filter blur-2xl pointer-events-none" />
 
-        <div className="space-y-4 z-10">
-          {/* Header Kartu */}
+        {/* Bagian Atas: Header & Progress Bar */}
+        <div className="space-y-3 z-10">
           <div className="text-center">
-            <p className="text-[10px] font-black tracking-widest text-[#E07A5F] uppercase">Threadology Report</p>
-            <h2 className="text-xl font-black mt-0.5 text-[#1A1A1A] truncate">@{username}</h2>
+            <p className="text-[9px] font-black tracking-widest text-[#E07A5F] uppercase">Threadology Report</p>
+            <h2 className="text-lg font-black mt-0.5 text-[#1A1A1A] truncate">@{username}</h2>
           </div>
 
-          {/* Meter kemajuan */}
-          <div className="space-y-2.5 bg-[#FAFAFA]/90 backdrop-blur-sm rounded-2xl p-3.5 border border-[#F2EDE4]">
+          {/* Meter kemajuan (Padding & Tinggi Bar Diperkecil Sedikit) */}
+          <div className="space-y-2 bg-[#FAFAFA]/90 backdrop-blur-sm rounded-xl p-3 border border-[#F2EDE4]">
             {barItems.map((item) => (
               <div key={item.key} className="space-y-0.5">
-                <div className="flex justify-between text-[11px] font-bold text-gray-600">
+                <div className="flex justify-between text-[10px] font-bold text-gray-600">
                   <span>{item.label}</span>
                   <span>{item.value}%</span>
                 </div>
-                <div className="w-full h-3 bg-gray-200/60 rounded-full overflow-hidden">
+                <div className="w-full h-2.5 bg-gray-200/60 rounded-full overflow-hidden">
                   <div 
                     className={`h-full ${item.bg} rounded-full transition-all duration-1000 ease-out`}
                     style={{ width: `${item.animValue}%` }}
@@ -94,25 +92,25 @@ export default function ResultPage({ username, dataMock, onReset }) {
           </div>
         </div>
 
-        {/* Diagnosis & Skor (Tengah-Bawah Kartu) */}
-        <div className="space-y-3 z-10 mt-auto">
-          {/* Kotak Kesimpulan */}
+        {/* Bagian Bawah: Diagnosis & Status (Dioptimalkan agar Teks Bebas Mengalir) */}
+        <div className="space-y-2.5 z-10 mt-auto pt-2">
+          {/* Kotak Kesimpulan (LINE-CLAMP DIHAPUS, Teks Mengalir Utuh) */}
           <div className="bg-[#FFFDF9]/90 border-l-4 border-[#E07A5F] rounded-r-xl p-3 shadow-sm">
-            <h4 className="text-xs font-black text-[#1A1A1A] truncate">
+            <h4 className="text-[11px] font-black text-[#1A1A1A]">
               🎯 Diagnosis: "{dataMock.result_meta.title}"
             </h4>
-            <p className="text-[11px] text-gray-600 mt-1 leading-relaxed line-clamp-3">
+            <p className="text-[10.5px] text-gray-600 mt-1 leading-relaxed font-medium">
               {dataMock.result_meta.punchline}
             </p>
           </div>
 
-          {/* Badge Skor Paling Bawah Kartu */}
-          <div className="flex items-center justify-between bg-[#E07A5F] text-white rounded-xl p-2.5 px-3.5 shadow-sm">
+          {/* Badge Skor Paling Bawah */}
+          <div className="flex items-center justify-between bg-[#E07A5F] text-white rounded-xl p-2 px-3 shadow-sm">
             <div className="text-left">
-              <p className="text-[9px] font-bold uppercase tracking-wider text-white/80">Skor Kewarasan</p>
-              <p className="text-sm font-black">{dataMock.result_meta.personality_level}</p>
+              <p className="text-[8px] font-bold uppercase tracking-wider text-white/80">Skor Kewarasan</p>
+              <p className="text-xs font-black tracking-wide">{dataMock.result_meta.personality_level}</p>
             </div>
-            <div className="text-2xl font-black bg-white/20 px-2.5 py-0.5 rounded-lg">
+            <div className="text-xl font-black bg-white/20 px-2 py-0.5 rounded-lg">
               {dataMock.result_meta.sanity_score}%
             </div>
           </div>
@@ -120,19 +118,19 @@ export default function ResultPage({ username, dataMock, onReset }) {
       </div>
       {/* ======================= END OF AREA KARTU ======================= */}
 
-      {/* Tombol Kontrol (Di luar kartu, tidak ikut terdownload) */}
-      <div className="w-full max-w-[340px] space-y-2.5 mt-5">
+      {/* Tombol Kontrol */}
+      <div className="w-full max-w-[330px] space-y-2 mt-4">
         <button
           onClick={handleDownload}
           disabled={isDownloading}
-          className="w-full bg-[#1A1A1A] hover:bg-black text-white font-bold py-3.5 px-4 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 text-sm cursor-pointer disabled:opacity-50"
+          className="w-full bg-[#1A1A1A] hover:bg-black text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm cursor-pointer disabled:opacity-50"
         >
           {isDownloading ? '⏳ Menyimpan...' : '📸 Simpan Kartu ke Galeri'}
         </button>
         
         <button
           onClick={onReset}
-          className="w-full bg-white hover:bg-gray-50 text-[#E07A5F] border border-[#E07A5F] font-bold py-3.5 px-4 rounded-2xl shadow-sm transition-all duration-200 transform active:scale-95 text-sm cursor-pointer"
+          className="w-full bg-white hover:bg-gray-50 text-[#E07A5F] border border-[#E07A5F] font-bold py-3 px-4 rounded-xl shadow-sm transition-all duration-200 transform active:scale-95 text-sm cursor-pointer"
         >
           🔄 Cek Username Lain
         </button>
@@ -140,5 +138,4 @@ export default function ResultPage({ username, dataMock, onReset }) {
 
     </div>
   );
-          }
-            
+}
