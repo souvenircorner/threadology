@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import LandingPage from './components/LandingPage';
-import ResultPage from './components/ResultPage';
+import LandingPage from './LandingPage';
+import ResultPage from './ResultPage';
 
 export default function App() {
   const [username, setUsername] = useState('');
