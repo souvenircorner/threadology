@@ -78,11 +78,11 @@ export default function LandingPage({ onAnalyze }) {
               </div>
 
               <button
-                type="submit"
-                className="w-full bg-[#FFB7A1] hover:bg-[#FFA58A] text-white font-semibold py-3.5 px-4 rounded-2xl shadow-sm transition-all duration-200 transform active:scale-98"
-              >
-                Cek Vibe Kamu ✨
-              </button>
+  type="submit"
+  className="w-full bg-[#E07A5F] hover:bg-[#D16B50] text-white font-bold py-3.5 px-4 rounded-2xl shadow-md transition-all duration-200 transform active:scale-95 cursor-pointer"
+>
+  Cek Vibe Kamu ✨
+</button>
             </form>
 
             {/* Catatan Kaki */}
