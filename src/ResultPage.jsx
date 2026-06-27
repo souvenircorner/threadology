@@ -58,10 +58,11 @@ export default function ResultPage({ username, dataMock, onReset }) {
 
       {/* ================= AREA KARTU RASIO 3:4 (ANTI-POTONG) ================= */}
       <div 
-        ref={cardRef}
-        id="download-card"
-        className="w-full max-w-[330px] aspect-[3/4] bg-white border border-[#EBE6DD] rounded-[28px] p-4 shadow-sm flex flex-col justify-between overflow-hidden relative"
-      >
+  ref={cardRef}
+  id="download-card"
+  className="w-full max-w-[330px] aspect-[3/4] bg-[#F4F0EA] border border-[#E4DDD3] rounded-[28px] p-4 shadow-sm flex flex-col justify-between overflow-hidden relative"
+>
+        
         {/* Background Hiasan Halus */}
         <div className="absolute -top-20 -left-20 w-48 h-48 bg-[#DCEEFF]/40 rounded-full filter blur-2xl pointer-events-none" />
         <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#FFE3D1]/50 rounded-full filter blur-2xl pointer-events-none" />
