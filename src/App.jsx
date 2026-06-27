@@ -59,8 +59,7 @@ export default function App() {
         "Tiap jam kerja isinya sambat, pas weekend isinya story pamer kopi mahal. Kamu adalah definisi budak korporat sejati yang terjebak dalam lingkaran setan kapitalisme.",
         "Ketik 'capek' udah jadi refleks bawaan jempol kamu. Cita-cita pengen kaya raya tapi hobi rebahan sambil nunggu warisan misterius yang gak bakal datang.",
         "Threads kamu udah kayak papan pengumuman ruang UGD: isinya keluhan sakit punggung, pusing sama kerjaan, dan mental breakdown tipis-tipis. Butuh dipijat dompetnya ini.",
-        "Kamu mengeluh di Threads biar gak keliatan menderita di Instagram, kan? Ketahuan triknya! Tapi gapapa, sambatmu sangat mewakili jutaan buruh ketik lainnya.",
-        "Setiap denger kata 'Revisi' atau 'Rapat', tekanan darahmu langsung naik. Motivasi kerjamu cuma satu: tagihan paylater yang jatuh tempo tanggal 25."
+        "Kamu mengeluh di Threads biar gak keliatan menderita di Instagram, kan? Ketahuan triknya! Tapi gapapa, sambatmu sangat mewakili jutaan buruh ketik lainnya."
       ]
     },
     spillologist: {
