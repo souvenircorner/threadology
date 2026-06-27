@@ -94,18 +94,26 @@ export default function ResultPage({ username, dataMock, onReset }) {
         </div>
 
         {/* Tombol Utama untuk Share */}
-        <div className="space-y-2">
-          <button
-            onClick={() => alert('Fitur generate kartu gambar sedang disiapkan!')}
-            className="w-full bg-[#1A1A1A] hover:bg-black text-white font-semibold py-3.5 px-4 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 text-sm"
-          >
-            📸 Bagikan ke Threads
-          </button>
-          
-          <p className="text-[11px] text-center text-gray-400">
-            Hasil ini murni untuk hiburan semata, jangan dibawa serius ya!
-          </p>
-        </div>
+<div className="space-y-3">
+  <button
+    onClick={() => alert('Fitur generate kartu gambar sedang disiapkan!')}
+    className="w-full bg-[#1A1A1A] hover:bg-black text-white font-semibold py-3.5 px-4 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
+  >
+    📸 Bagikan ke Threads
+  </button>
+  
+  {/* TOMBOL BARU: Cek Lagi / Kembali */}
+  <button
+    onClick={onReset}
+    className="w-full bg-white hover:bg-gray-50 text-[#E07A5F] border border-[#E07A5F] font-bold py-3.5 px-4 rounded-2xl shadow-sm transition-all duration-200 transform active:scale-95 text-sm cursor-pointer"
+  >
+    🔄 Cek Username Lain
+  </button>
+  
+  <p className="text-[11px] text-center text-gray-400">
+    Hasil ini murni untuk hiburan semata, jangan dibawa serius ya!
+  </p>
+</div>
 
       </div>
     </div>
